@@ -21,7 +21,7 @@ Além disso, o curso inclui práticas de testes utilizando **pytest**, garantind
 
 ---
 
-## O que Você Vai Aprender?  
+## O que foi ensinado ?  
 
 Aqui está uma visão geral dos tópicos abordados no curso:  
 
@@ -48,8 +48,6 @@ Aqui está uma visão geral dos tópicos abordados no curso:
    - Deploy utilizando **Fly.io**.  
 
 ---
-
-Organizado, didático e atualizado para 2024, este curso é ideal para quem deseja aprender FastAPI na prática. 🚀  
 
 
 
