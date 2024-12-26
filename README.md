@@ -1,21 +1,59 @@
-# To-Do List 📝
+# Repositório do Curso de FastAPI do Eduardo Mendes  
 
-Welcome to my FastAPI learning project! This repository focuses on building a functional To-Do List application while practicing essential FastAPI concepts and features.
+## Sobre o Curso  
+
+Este curso foi desenvolvido para oferecer uma experiência prática no uso do **FastAPI**, uma das ferramentas mais modernas para construção de APIs.  
+
+Ao longo do curso, o objetivo é que você obtenha uma compreensão das funcionalidades do FastAPI e das boas práticas associadas.  
+
+O projeto central será a construção de um **gerenciador de tarefas (lista de tarefas)**, começando do zero. Este projeto incluirá:  
+- Implementação da **autenticação de usuário**.  
+- Operações **CRUD completas**.  
+
+### Ferramentas Utilizadas  
+- **FastAPI** (versão 0.115).  
+- **Pydantic** (versão 2.0+).  
+- **SQLAlchemy ORM** (versão 2.0+).  
+- **Python** (versões 3.11/3.12).  
+- **Alembic** para gerenciamento de migrações.  
+
+Além disso, o curso inclui práticas de testes utilizando **pytest**, garantindo que as APIs desenvolvidas sejam funcionais, robustas e confiáveis.  
+
 ---
 
-🎯 Learning Goals
+## O que Você Vai Aprender?  
 
-- CRUD Operations: Implement Create, Read, Update, and Delete functionality for task management.
-- Class-Based Views: Utilize Django's CBVs for cleaner and reusable code.
-- User Authentication: Add secure login, registration, and session management.
-- REST APIs: Build and integrate APIs to enhance functionality and scalability.
+Aqui está uma visão geral dos tópicos abordados no curso:  
 
-🌟 Features
+1. **Configuração do Ambiente de Desenvolvimento**  
+   - Começaremos do zero, criando e configurando o ambiente de desenvolvimento para FastAPI.  
 
-- Add, edit, and delete tasks.
-- Mark tasks as complete/incomplete.
-- User-specific task lists with secure login.
-- REST API endpoints for task management.
+2. **Primeiros Passos com FastAPI e Testes**  
+   - Estrutura básica de um projeto FastAPI.  
+   - Introdução detalhada ao **Test Driven Development (TDD)**.  
 
-🤝 Contributions
-Feel free to fork this repository, create pull requests, or suggest improvements. I'm always eager to learn!
+3. **Modelagem de Dados com Pydantic e SQLAlchemy**  
+   - Criação e manipulação de modelos de dados utilizando Pydantic e SQLAlchemy.  
+
+4. **Autenticação e Autorização**  
+   - Construção de um sistema de autenticação completo.  
+   - Proteção de rotas e controle de acesso para usuários autenticados.  
+
+5. **Testando sua Aplicação FastAPI**  
+   - Introdução aos testes utilizando **pytest** e **coverage**.  
+   - Execução dos testes em um pipeline de integração contínua com **GitHub Actions**.  
+
+6. **Dockerizando e Fazendo Deploy**  
+   - "Dockerização" da aplicação FastAPI.  
+   - Deploy utilizando **Fly.io**.  
+
+---
+
+Organizado, didático e atualizado para 2024, este curso é ideal para quem deseja aprender FastAPI na prática. 🚀  
+
+
+
+
+
+
+
