@@ -12,6 +12,20 @@ fastapi = "^0.115.6"
 
 [tool.poetry.group.dev.dependencies]
 uvicorn = "^0.34.0"
+ruff = "^0.8.4"
+
+[toll.ruff]
+line-length = 79
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
 
 [build-system]
 requires = ["poetry-core"]
