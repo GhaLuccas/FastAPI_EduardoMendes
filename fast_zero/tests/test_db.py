@@ -1,13 +1,13 @@
-from sqlalchemy import create_engine
+from sqlalchemy import select
 
-from fast_zero.models import User, table_registry
+from fast_zero.models import User
 
 
-def test_create_user_model():
-    create_engine('sqlite:///database.db')
-
-    table_registry.metadata.create_all
-
+def test_create_user_model(session):
     user = User(username='model-user', email='user@gmail.com', password='senha')
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    result = session.scalar(select(User).where(User.email == 'user@gmail.com'))
 
-    assert user.password == 'senha'
+    assert result.password == 'senha'
