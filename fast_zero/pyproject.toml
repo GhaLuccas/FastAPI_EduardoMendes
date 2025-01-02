@@ -32,9 +32,10 @@ pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
 
-[toll.ruff]
-line-length = 79
-extend-exclude = ['migrations']
+[tool.ruff]
+line-length = 80
+extend-exclude = ['migrations', 'migrations/versions/e4325aac86f6_initial_migration.py']
+
 
 [tool.ruff.lint]
 preview = true
