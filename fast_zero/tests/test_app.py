@@ -1,7 +1,5 @@
 from http import HTTPStatus
 
-import pytest
-
 from fast_zero.schemas import UserPublic
 
 
@@ -34,7 +32,6 @@ def test_read_users_with_users(client, user):
     assert response.json() == {'users': [user_schema]}
 
 
-@pytest.mark.skip
 def test_update_user(client, user, token):
     response = client.put(
         f'/users/{user.id}',
