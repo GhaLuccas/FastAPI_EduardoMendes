@@ -13,10 +13,10 @@ from fast_zero.security import (
     verify_password,
 )
 
-router = APIRouter(prefix='/auth', tags=['auth'])
+auth_router = APIRouter(prefix='/auth', tags=['auth'])
 
 
-@router.post('/token', response_model=Token)
+@auth_router.post('/token', response_model=Token)
 def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     session: Session = Depends(get_session),

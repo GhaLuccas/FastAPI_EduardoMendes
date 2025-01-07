@@ -13,10 +13,12 @@ from fast_zero.security import (
     get_password_hash,
 )
 
-router = APIRouter(prefix='/users', tags=['users'])
+users_router = APIRouter(prefix='/users', tags=['users'])
 
 
-@router.post('/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
+@users_router.post(
+    '/', status_code=HTTPStatus.CREATED, response_model=UserPublic
+)
 def create_user(user: UserSchema, session: Session = Depends(get_session)):
     db_user = session.scalar(
         select(User).where(
@@ -51,7 +53,7 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
     return db_user
 
 
-@router.get('/', response_model=UserList)
+@users_router.get('/', response_model=UserList)
 def read_users(
     skip: int = 0, limit: int = 100, session: Session = Depends(get_session)
 ):
@@ -59,7 +61,7 @@ def read_users(
     return {'users': users}
 
 
-@router.put('/{user_id}', response_model=UserPublic)
+@users_router.put('/{user_id}', response_model=UserPublic)
 def update_user(
     user_id: int,
     user: UserSchema,
@@ -86,7 +88,7 @@ def update_user(
         )
 
 
-@router.delete('/{user_id}', response_model=Message)
+@users_router.delete('/{user_id}', response_model=Message)
 def delete_user(
     user_id: int,
     session: Session = Depends(get_session),
