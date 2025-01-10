@@ -1,4 +1,5 @@
 from http import HTTPStatus
+from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
@@ -14,12 +15,14 @@ from fast_zero.security import (
 )
 
 users_router = APIRouter(prefix='/users', tags=['users'])
+T_Session = Annotated[Session, Depends(get_session)]
+T_CurrentUser = Annotated[User, Depends(get_current_user)]
 
 
 @users_router.post(
     '/', status_code=HTTPStatus.CREATED, response_model=UserPublic
 )
-def create_user(user: UserSchema, session: Session = Depends(get_session)):
+def create_user(user: UserSchema, session: T_Session):
     db_user = session.scalar(
         select(User).where(
             (User.username == user.username) | (User.email == user.email)
@@ -55,7 +58,9 @@ def create_user(user: UserSchema, session: Session = Depends(get_session)):
 
 @users_router.get('/', response_model=UserList)
 def read_users(
-    skip: int = 0, limit: int = 100, session: Session = Depends(get_session)
+    session: T_Session,
+    skip: int = 0,
+    limit: int = 100,
 ):
     users = session.scalars(select(User).offset(skip).limit(limit)).all()
     return {'users': users}
@@ -65,8 +70,8 @@ def read_users(
 def update_user(
     user_id: int,
     user: UserSchema,
-    session: Session = Depends(get_session),
-    current_user: User = Depends(get_current_user),
+    session: T_Session,
+    current_user: T_CurrentUser,
 ):
     if current_user.id != user_id:
         raise HTTPException(
@@ -91,8 +96,8 @@ def update_user(
 @users_router.delete('/{user_id}', response_model=Message)
 def delete_user(
     user_id: int,
-    session: Session = Depends(get_session),
-    current_user: User = Depends(get_current_user),
+    session: T_Session,
+    current_user: T_CurrentUser,
 ):
     if current_user.id != user_id:
         raise HTTPException(
