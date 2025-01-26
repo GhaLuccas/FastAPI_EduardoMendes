@@ -16,15 +16,13 @@ from fast_zero.security import (
 )
 
 auth_router = APIRouter(prefix='/auth', tags=['auth'])
-t_Session = Annotated[Session, Depends(get_session)]
-T_OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
+
+OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
+Session = Annotated[Session, Depends(get_session)]
 
 
 @auth_router.post('/token', response_model=Token)
-def login_for_access_token(
-    session: t_Session,
-    form_data: T_OAuth2Form,
-):
+def login_for_access_token(form_data: OAuth2Form, session: Session):
     user = session.scalar(select(User).where(User.email == form_data.username))
 
     if not user:
